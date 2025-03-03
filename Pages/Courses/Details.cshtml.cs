@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Student_Management_System.Data;
-using Student_Management_System.Models;
 
-namespace Student_Management_System.Pages
+namespace Student_Management_System.Pages.Courses
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +18,7 @@ namespace Student_Management_System.Pages
             _context = context;
         }
 
-        public Enrollment Enrollment { get; set; } = default!;
+        public Course Course { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,14 +27,14 @@ namespace Student_Management_System.Pages
                 return NotFound();
             }
 
-            var enrollment = await _context.Enrollments.FirstOrDefaultAsync(m => m.EnrollmentID == id);
-            if (enrollment == null)
+            var course = await _context.Courses.FirstOrDefaultAsync(m => m.CourseID == id);
+            if (course == null)
             {
                 return NotFound();
             }
             else
             {
-                Enrollment = enrollment;
+                Course = course;
             }
             return Page();
         }

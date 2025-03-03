@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Student_Management_System.Data;
-using Student_Management_System.Models;
 
-namespace Student_Management_System.Pages
+namespace Student_Management_System.Pages.Students
 {
     public class IndexModel : PageModel
     {
@@ -19,13 +18,11 @@ namespace Student_Management_System.Pages
             _context = context;
         }
 
-        public IList<Enrollment> Enrollment { get;set; } = default!;
+        public IList<Student> Student { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Enrollment = await _context.Enrollments
-                .Include(e => e.Course)
-                .Include(e => e.Student).ToListAsync();
+            Student = await _context.Students.ToListAsync();
         }
     }
 }

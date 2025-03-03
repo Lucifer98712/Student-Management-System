@@ -7,9 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Student_Management_System.Data;
-using Student_Management_System.Models;
 
-namespace Student_Management_System.Pages
+namespace Student_Management_System.Pages.Enrollments
 {
     public class EditModel : PageModel
     {

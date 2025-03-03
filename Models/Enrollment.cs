@@ -1,5 +1,4 @@
-﻿namespace Student_Management_System.Models
-{
+﻿
     public class Enrollment
     {
         public int EnrollmentID { get; set; }
@@ -13,4 +12,4 @@
     {
         A, B, C, D, F
     }
-}
+

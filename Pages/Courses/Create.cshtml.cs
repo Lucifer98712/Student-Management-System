@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Student_Management_System.Data;
-using Student_Management_System.Models;
 
-namespace Student_Management_System.Pages
+namespace Student_Management_System.Pages.Courses
 {
     public class CreateModel : PageModel
     {
@@ -21,13 +20,11 @@ namespace Student_Management_System.Pages
 
         public IActionResult OnGet()
         {
-        ViewData["CourseID"] = new SelectList(_context.Courses, "CourseID", "CourseID");
-        ViewData["StudentID"] = new SelectList(_context.Students, "StudentId", "StudentId");
             return Page();
         }
 
         [BindProperty]
-        public Enrollment Enrollment { get; set; } = default!;
+        public Course Course { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -37,7 +34,7 @@ namespace Student_Management_System.Pages
                 return Page();
             }
 
-            _context.Enrollments.Add(Enrollment);
+            _context.Courses.Add(Course);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
